@@ -1,0 +1,20 @@
+{
+    "name": "url_shortner",
+    "version": "1.0.0",
+    "description": "a node js url shortner app",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "author": "seun awonugba",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "http-status-codes": "^2.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    }
+}
