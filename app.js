@@ -4,9 +4,13 @@ const { StatusCodes, ReasonPhrases } = require("http-status-codes");
 const { errorMiddleware } = require("./middleware");
 const { router } = require("./router/router");
 const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+const yamljs = require("yamljs");
 const app = express();
 const port = process.env.PORT || 8000;
 const host = "localhost";
+
+const loadDocs = yamljs.load("./swagger.yaml");
 
 app.use(express.json());
 app.use(cors());
@@ -18,6 +22,8 @@ app.get("/", (req, res) => {
         data: ReasonPhrases.OK,
     });
 });
+
+app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(loadDocs));
 
 app.use("/api/v1/", router);
 
