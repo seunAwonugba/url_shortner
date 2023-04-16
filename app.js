@@ -8,6 +8,8 @@ const port = process.env.PORT || 8000;
 const host = "localhost";
 
 app.use(express.json());
+
+//left here deliberately to ascertain you have set up the app successfully upon clone
 app.get("/", (req, res) => {
     return res.status(StatusCodes.OK).json({
         success: true,
