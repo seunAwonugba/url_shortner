@@ -29,6 +29,22 @@ class UrlShortenerRepository {
 
         return decode;
     }
+
+    async redirect({ shortUrl }) {
+        const decode = await urlModel.findOne({
+            where: { shortUrl },
+        });
+
+        if (decode == null) {
+            throw new BadRequest(`No record found for short URL: ${shortUrl}`);
+        }
+
+        decode.clicks += 1;
+
+        await decode.save();
+
+        return decode.originalUrl;
+    }
 }
 
 module.exports = { UrlShortenerRepository };
