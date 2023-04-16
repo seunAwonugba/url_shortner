@@ -24,7 +24,7 @@ router.post("/decode", async (req, res, next) => {
     }
 });
 
-router.get("/redirect", async (req, res, next) => {
+router.post("/redirect", async (req, res, next) => {
     try {
         const redirect = await urlShortenerService.redirect(req.body);
         return res.status(StatusCodes.OK).redirect(redirect.data);

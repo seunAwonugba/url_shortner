@@ -25,7 +25,9 @@
         "pg": "^8.10.0",
         "pg-hstore": "^2.3.4",
         "sequelize": "^6.31.0",
-        "valid-url": "^1.0.9"
+        "swagger-ui-express": "^4.6.2",
+        "valid-url": "^1.0.9",
+        "yamljs": "^0.3.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.22",
