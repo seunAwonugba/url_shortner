@@ -27,7 +27,7 @@ router.get("/decode", async (req, res, next) => {
 router.get("/redirect", async (req, res, next) => {
     try {
         const redirect = await urlShortenerService.redirect(req.body);
-        return res.status(StatusCodes.CREATED).redirect(redirect.data);
+        return res.status(StatusCodes.OK).redirect(redirect.data);
     } catch (error) {
         next(error);
     }
@@ -36,7 +36,7 @@ router.get("/redirect", async (req, res, next) => {
 router.get("/statistic/:url_path", async (req, res, next) => {
     try {
         const stats = await urlShortenerService.statistic(req.params.url_path);
-        return res.status(StatusCodes.CREATED).json(stats);
+        return res.status(StatusCodes.OK).json(stats);
     } catch (error) {
         next(error);
     }
