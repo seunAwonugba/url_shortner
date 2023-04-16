@@ -1,4 +1,3 @@
-const { log } = require("console");
 const { CustomErrorHandler } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 

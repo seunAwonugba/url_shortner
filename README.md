@@ -56,6 +56,14 @@ navigate to http://localhost:8000 to see the application running.
 
 It means app is set up successfully and you are ready to go.
 
+6. Run
+
+```bash
+npm run db:refresh
+```
+
+To actually create db table in the database and run the migration script
+
 ## Database Configuration
 
 This application uses PostgreSQL as its database. To configure the database, add the following environment variables to a .env file in the root directory of the project:

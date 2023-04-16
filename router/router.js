@@ -1,7 +1,7 @@
 const express = require("express");
 const { UrlShortenerService } = require("../service/UrlShortenerService");
 const { StatusCodes } = require("http-status-codes");
-const { log } = require("console");
+// const { log } = require("console");
 const router = express.Router();
 
 const urlShortenerService = new UrlShortenerService();

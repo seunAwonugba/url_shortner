@@ -1,4 +1,3 @@
-const { log } = require("console");
 const { urlModel } = require("../models");
 const { BadRequest } = require("../errors");
 
