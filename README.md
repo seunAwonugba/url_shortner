@@ -43,6 +43,13 @@ It installs all the packages this application depends on to run
 npm run dev
 ```
 
+If you see
+
+a. Executing (default): SELECT 1+1 AS result
+b. DB Connection has been established successfully.
+c. Server is listening on http://localhost:8000
+It means App and DB connection has been established successfully
+
 navigate to http://localhost:8000 to see the application running.
 
 5. If step 4 returns

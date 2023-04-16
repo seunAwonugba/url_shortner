@@ -6,6 +6,8 @@ const { router } = require("./router/router");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const yamljs = require("yamljs");
+const { sequelize } = require("./models/index");
+
 const app = express();
 const port = process.env.PORT || 8000;
 const host = "localhost";
@@ -29,6 +31,17 @@ app.use("/api/v1/", router);
 
 app.use(errorMiddleware);
 
-app.listen(port, host, () => {
-    console.log(`Server is listening on http://${host}:${port}`);
-});
+const testDbConnection = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log("DB Connection has been established successfully.");
+
+        app.listen(port, host, () => {
+            console.log(`Server is listening on http://${host}:${port}`);
+        });
+    } catch (error) {
+        console.error("Unable to connect to the database:", error);
+    }
+};
+
+testDbConnection();
