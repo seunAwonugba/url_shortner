@@ -9,7 +9,6 @@ class UrlShortenerRepository {
     }
 
     async findOriginalUrl({ originalUrl }) {
-        console.log(urlModel);
         const findOriginalUrl = await urlModel.findOne({
             where: { originalUrl },
         });
