@@ -97,6 +97,19 @@ class UrlShortenerService {
             data: redirect,
         };
     }
+
+    async statistic(params) {
+        const findUrlCode = await this.repository.findUrlCode(params);
+
+        if (!findUrlCode) {
+            throw new BadRequest(`No record found for short URL: ${params}`);
+        }
+
+        return {
+            success: true,
+            data: findUrlCode.clicks,
+        };
+    }
 }
 
 module.exports = { UrlShortenerService };

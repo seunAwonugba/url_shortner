@@ -37,6 +37,14 @@ class UrlShortenerRepository {
 
         return decode.originalUrl;
     }
+
+    async findUrlCode(urlCode) {
+        const findUrlCode = await urlModel.findOne({
+            where: { urlCode },
+        });
+
+        return findUrlCode;
+    }
 }
 
 module.exports = { UrlShortenerRepository };

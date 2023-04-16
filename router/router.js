@@ -33,4 +33,13 @@ router.get("/redirect", async (req, res, next) => {
     }
 });
 
+router.get("/statistic/:url_path", async (req, res, next) => {
+    try {
+        const stats = await urlShortenerService.statistic(req.params.url_path);
+        return res.status(StatusCodes.CREATED).json(stats);
+    } catch (error) {
+        next(error);
+    }
+});
+
 module.exports = { router };
