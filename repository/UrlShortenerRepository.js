@@ -18,17 +18,25 @@ class UrlShortenerRepository {
         return findOriginalUrl;
     }
 
-    async decode({ shortUrl }) {
-        const decode = await urlModel.findOne({
+    async findShortUrl({ shortUrl }) {
+        const findShortUrl = await urlModel.findOne({
             where: { shortUrl },
         });
 
-        if (decode == null) {
-            throw new BadRequest(`No record found for short URL: ${shortUrl}`);
-        }
-
-        return decode;
+        return findShortUrl;
     }
+
+    // async decode({ shortUrl }) {
+    //     const decode = await urlModel.findOne({
+    //         where: { shortUrl },
+    //     });
+
+    //     if (decode == null) {
+    //         throw new BadRequest(`No record found for short URL: ${shortUrl}`);
+    //     }
+
+    //     return decode;
+    // }
 
     async redirect({ shortUrl }) {
         const decode = await urlModel.findOne({
