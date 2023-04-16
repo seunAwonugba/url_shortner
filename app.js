@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
     });
 });
 
-app.use("/encode", router);
+app.use("/api/v1/", router);
 
 app.use(errorMiddleware);
 
