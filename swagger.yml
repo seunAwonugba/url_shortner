@@ -1,0 +1,267 @@
+openapi: 3.0.0
+info:
+    title: url-shortener
+    description: |-
+        This is a sample url shortener app Server based on the OpenAPI 3.0 specification. It gives users the opportunity to shorten long urls, decode urls encoded by this app and also helps users manage number of clicks on the url
+        Some useful links:
+        - [url shortener repository](https://github.com/seunAwonugba/url_shortner)
+    contact:
+        email: seunawonugba@gmail.com
+    version: "1.0"
+servers:
+    - url: http://localhost:8000/api/v1
+      variables: {}
+paths:
+    /encode:
+        post:
+            tags:
+                - Service
+            summary: encode
+            operationId: encode
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: "#/components/schemas/encoderequest"
+                required: true
+            responses:
+                "201":
+                    description: Created
+                    headers:
+                        X-Powered-By:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Content-Length:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        ETag:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Date:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Connection:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Keep-Alive:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                    content:
+                        application/json; charset=utf-8:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/encode"
+            deprecated: false
+            security: []
+    /decode:
+        post:
+            tags:
+                - Service
+            summary: decode
+            operationId: decode
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            allOf:
+                                - $ref: "#/components/schemas/decoderequest"
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    headers:
+                        X-Powered-By:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Content-Length:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        ETag:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Date:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Connection:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Keep-Alive:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                    content:
+                        application/json; charset=utf-8:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/decode"
+            deprecated: false
+            security: []
+    /statistic/{url_path}:
+        get:
+            tags:
+                - Service
+            summary: statistic
+            operationId: statistic
+            parameters:
+                - in: path
+                  name: url_path
+                  schema:
+                      type: string
+                  required: true
+                  description: url code
+            responses:
+                "200":
+                    description: Created
+                    headers:
+                        X-Powered-By:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Content-Length:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        ETag:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Date:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Connection:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                        Keep-Alive:
+                            content:
+                                text/plain:
+                                    schema:
+                                        type: string
+                    content:
+                        application/json; charset=utf-8:
+                            schema:
+                                allOf:
+                                    - $ref: "#/components/schemas/statistic"
+            deprecated: false
+            security: []
+components:
+    schemas:
+        encoderequest:
+            title: Decoder request
+            required:
+                - originalUrl
+            type: object
+            properties:
+                originalUrl:
+                    type: string
+        encode:
+            title: Encode
+            required:
+                - success
+                - data
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    allOf:
+                        - $ref: "#/components/schemas/Data"
+                        - {}
+        Data:
+            title: Data
+            required:
+                - clicks
+                - id
+                - urlCode
+                - originalUrl
+                - shortUrl
+                - updatedAt
+                - createdAt
+            type: object
+            properties:
+                clicks:
+                    type: integer
+                    format: int32
+                id:
+                    type: integer
+                    format: int32
+                urlCode:
+                    type: string
+                originalUrl:
+                    type: string
+                shortUrl:
+                    type: string
+                updatedAt:
+                    type: string
+                createdAt:
+                    type: string
+
+        decoderequest:
+            title: Decoder request
+            required:
+                - shortUrl
+            type: object
+            properties:
+                shortUrl:
+                    type: string
+        decode:
+            title: Decode
+            required:
+                - success
+                - data
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    allOf:
+                        - $ref: "#/components/schemas/Data"
+                        - {}
+        statistic:
+            title: Statistic
+            required:
+                - success
+                - data
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    type: integer
+                    format: int32
+tags:
+    - name: Service
