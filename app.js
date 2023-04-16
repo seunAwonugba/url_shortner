@@ -3,6 +3,7 @@ require("dotenv").config();
 const { StatusCodes, ReasonPhrases } = require("http-status-codes");
 const { errorMiddleware } = require("./middleware");
 const { router } = require("./router/router");
+const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 8000;
 const host = "localhost";
