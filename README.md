@@ -64,6 +64,14 @@ npm run db:refresh
 
 To actually create db table in the database and run the migration script
 
+7. Test the following endpoint to see how it works
+   a. localhost:8000/api/v1/encode - Encodes a URL to a shortened URL
+   b. localhost:8000/api/v1/decode - Decodes a shortened URL to its original URL
+   c. localhost:8000/api/v1/redirect - Click on the shortened URL endpoint
+   d. localhost:8000/api/v1/statistic/{url_path} - Returns basic stat of a short URL path. Using the above link url_path will be GeAi9K
+
+8. Test can also be carried out on the swagger docs visit localhost:8000/api/v1/redirect
+
 ## Database Configuration
 
 This application uses PostgreSQL as its database. To configure the database, add the following environment variables to a .env file in the root directory of the project:
