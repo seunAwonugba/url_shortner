@@ -1,8 +1,8 @@
 const { urlmodel } = require("../models");
 
 class UrlShortenerRepository {
-    async encode({ urlCode, originalUrl, shortUrl, clicks }) {
-        const data = { urlCode, originalUrl, shortUrl, clicks };
+    async encode({ urlCode, originalUrl, shortUrl }) {
+        const data = { urlCode, originalUrl, shortUrl };
 
         const encode = await urlmodel.create({ ...data });
         return encode;

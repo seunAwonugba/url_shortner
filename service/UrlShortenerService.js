@@ -48,3 +48,5 @@ class UrlShortenerService {
         };
     }
 }
+
+module.exports = { UrlShortenerService };

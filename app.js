@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const { StatusCodes, ReasonPhrases } = require("http-status-codes");
 const { errorMiddleware } = require("./middleware");
+const { router } = require("./router/router");
 const app = express();
 const port = process.env.PORT || 8000;
 const host = "localhost";
@@ -13,6 +14,8 @@ app.get("/", (req, res) => {
         data: ReasonPhrases.OK,
     });
 });
+
+app.use("/encode", router);
 
 app.use(errorMiddleware);
 
