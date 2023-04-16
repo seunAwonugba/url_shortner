@@ -84,6 +84,12 @@ class UrlShortenerService {
             throw new BadRequest("Invalid 'short.est' short url");
         }
 
+        const findShortUrl = await this.repository.findShortUrl({ ...payload });
+
+        if (!findShortUrl) {
+            throw new BadRequest(`No record found for short URL: ${shortUrl}`);
+        }
+
         const redirect = await this.repository.redirect({ ...payload });
 
         return {
