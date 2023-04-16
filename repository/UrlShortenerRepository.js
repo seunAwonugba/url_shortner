@@ -1,4 +1,6 @@
+const { log } = require("console");
 const { urlModel } = require("../models");
+const { BadRequest } = require("../errors");
 
 class UrlShortenerRepository {
     async encode({ urlCode, originalUrl, shortUrl }) {
@@ -14,6 +16,18 @@ class UrlShortenerRepository {
         });
 
         return findOriginalUrl;
+    }
+
+    async decode({ shortUrl }) {
+        const decode = await urlModel.findOne({
+            where: { shortUrl },
+        });
+
+        if (decode == null) {
+            throw new BadRequest(`No record found for short URL: ${shortUrl}`);
+        }
+
+        return decode;
     }
 }
 

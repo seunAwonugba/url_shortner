@@ -49,6 +49,25 @@ class UrlShortenerService {
             data: createShortUrl,
         };
     }
+
+    async decode(payload) {
+        const { shortUrl } = payload;
+
+        if (!shortUrl) {
+            throw new BadRequest("Short url is required");
+        }
+
+        if (!shortUrl.startsWith(process.env.BASE_URL)) {
+            throw new BadRequest("Invalid 'short.est' short url");
+        }
+
+        const decode = await this.repository.decode({ ...payload });
+
+        return {
+            success: true,
+            data: decode,
+        };
+    }
 }
 
 module.exports = { UrlShortenerService };
