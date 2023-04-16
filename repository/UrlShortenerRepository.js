@@ -1,15 +1,16 @@
-const { urlmodel } = require("../models");
+const { urlModel } = require("../models");
 
 class UrlShortenerRepository {
     async encode({ urlCode, originalUrl, shortUrl }) {
         const data = { urlCode, originalUrl, shortUrl };
 
-        const encode = await urlmodel.create({ ...data });
+        const encode = await urlModel.create({ ...data });
         return encode;
     }
 
     async findOriginalUrl({ originalUrl }) {
-        const findOriginalUrl = await urlmodel.findOne({
+        console.log(urlModel);
+        const findOriginalUrl = await urlModel.findOne({
             where: { originalUrl },
         });
 

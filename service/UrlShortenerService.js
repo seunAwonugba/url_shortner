@@ -24,7 +24,9 @@ class UrlShortenerService {
             throw new BadRequest("Please provide a valid url");
         }
 
-        const findOriginalUrl = await this.repository.findOriginalUrl(payload);
+        const findOriginalUrl = await this.repository.findOriginalUrl({
+            ...payload,
+        });
 
         if (findOriginalUrl) {
             return {

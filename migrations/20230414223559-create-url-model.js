@@ -13,7 +13,7 @@ module.exports = {
                 type: Sequelize.STRING,
             },
             originalUrl: {
-                type: Sequelize.STRING,
+                type: Sequelize.STRING(1000),
                 allowNull: false,
                 validate: {
                     notEmpty: {

@@ -1,3 +1,4 @@
+const { log } = require("console");
 const { CustomErrorHandler } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
 
@@ -11,6 +12,7 @@ const errorMiddleware = (err, req, res, next) => {
     }
 
     console.log(`Sequelize error -> ${err}`);
+    console.log(err);
     if (err.name === "SequelizeUniqueConstraintError") {
         return res.status(StatusCodes.CONFLICT).json({
             success: false,
