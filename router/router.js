@@ -15,7 +15,7 @@ router.post("/encode", async (req, res, next) => {
     }
 });
 
-router.get("/decode", async (req, res, next) => {
+router.post("/decode", async (req, res, next) => {
     try {
         const decode = await urlShortenerService.decode(req.body);
         return res.status(StatusCodes.OK).json(decode);
