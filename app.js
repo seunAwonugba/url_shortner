@@ -10,7 +10,7 @@ const { sequelize } = require("./models/index");
 
 const app = express();
 const port = process.env.PORT || 8000;
-const host = "localhost";
+const host = process.env.SERVER_HOST || "localhost";
 
 const loadDocs = yamljs.load("./swagger.yaml");
 
@@ -45,3 +45,5 @@ const testDbConnection = async () => {
 };
 
 testDbConnection();
+
+module.exports = app;
