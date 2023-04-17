@@ -1,18 +1,18 @@
-const express = require("express");
+let express = require("express");
 require("dotenv").config();
-const { StatusCodes, ReasonPhrases } = require("http-status-codes");
-const { errorMiddleware } = require("./middleware");
-const { router } = require("./router/router");
-const cors = require("cors");
-const swaggerUi = require("swagger-ui-express");
-const yamljs = require("yamljs");
-const { sequelize } = require("./models/index");
+let { StatusCodes, ReasonPhrases } = require("http-status-codes");
+let { errorMiddleware } = require("./middleware");
+let { router } = require("./router/router");
+let cors = require("cors");
+let swaggerUi = require("swagger-ui-express");
+let yamljs = require("yamljs");
+let { sequelize } = require("./models/index");
 
-const app = express();
-const port = process.env.PORT || 8000;
-const host = process.env.SERVER_HOST || "localhost";
+let app = express();
+let port = process.env.PORT || 8000;
+let host = process.env.SERVER_HOST || "localhost";
 
-const loadDocs = yamljs.load("./swagger.yaml");
+let loadDocs = yamljs.load("./swagger.yaml");
 
 app.use(express.json());
 app.use(cors());
