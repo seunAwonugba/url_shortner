@@ -46,4 +46,4 @@ const testDbConnection = async () => {
 
 testDbConnection();
 
-module.exports = app;
+module.exports = { app };
