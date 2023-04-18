@@ -84,7 +84,7 @@ To actually create db table in the database and run the migration script
 Run the following command to run tests:
 
 ```bash
-npm test
+npm run test
 ```
 
 This will run all tests in the `tests` directory.
