@@ -79,6 +79,16 @@ To actually create db table in the database and run the migration script
 
 8. Test can also be carried out on the swagger docs visit localhost:8000/api/v1/redirect
 
+## Running the tests
+
+Run the following command to run tests:
+
+```bash
+npm test
+```
+
+This will run all tests in the `tests` directory.
+
 ## Database Configuration
 
 This application uses PostgreSQL as its database. To configure the database, add the following environment variables to a .env file in the root directory of the project:
